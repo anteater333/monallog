@@ -1,29 +1,10 @@
-# monallog
+monallog, 집단적 독백
+==
 
-## Project setup
-```
-npm install
-```
+![main page](/image/monallog-main-page.PNG)  
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+monallog는 익명성과 휘발성을 보장하는 소셜 네트워크 서비스입니다.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Release notes
+ * 2020-03-17 v0.0.0 Alpha
+ * 2020-06-01 v0.0.1 Alpha 2
