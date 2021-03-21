@@ -1,7 +1,7 @@
 monallog, 집단적 독백
 ==
 
-![main page](/image/monallog-main-page.PNG)  
+![proto](/image/monallog-channel.gif)  
 
 monallog는 익명성과 휘발성을 보장하는 소셜 네트워크 서비스입니다.
 
