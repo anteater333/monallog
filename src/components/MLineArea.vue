@@ -39,6 +39,7 @@
 <script>
 import MLine from '@/components/MLine.vue'
 import { setTimeout, clearTimeout } from 'timers'
+import { now } from '@/assets/scripts/dateFormatter'
 
 export default {
     name: 'ListArea',
@@ -107,10 +108,13 @@ export default {
     },
     methods: {
         enqueue: function (input) {
+            /**
+             * Line 컴포넌트에 담기는 임시 데이터 (테스트용인듯)
+             */
             const line = { // 당연히 이게 아니라 객체를 전달해야함...
                 id: this.lineId,
                 text: input,
-                actor: '아무개',
+                actor: 'NotSignedUser',
                 date: now(),
                 timer: this.lineDuration,
                 lineWay: (this.lineId) % 10 + 1
