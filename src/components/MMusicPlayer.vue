@@ -35,6 +35,9 @@ export default {
         }
     },
     computed: {
+        /**
+         * 현재 재생 곡 정보
+         */
         nowPlaying: function () {
             let music
             if (this.playingOrder === undefined || this.playingOrder.length === 0) {
@@ -44,6 +47,9 @@ export default {
             }
             return music
         },
+        /**
+         * Playlist가 음악을 가지고 있는지 여부
+         */
         hasMusic: function () {
             if (this.playlist.length === 0) {
                 return false
@@ -58,17 +64,26 @@ export default {
         }
     },
     methods: {
+        /**
+         * 다음 트랙 재생
+         */
         nextTrack: function () {
             const ctrl = this.$refs.audioCtrl
 
             this.index += 1
 
+            // 플레이리스트를 모두 재생했는지 확인
             if (this.index >= this.playlist.length) {
+                // index 초기화
                 this.index = this.index % this.playlist.length
+                // 루프 모드가 아님
+                // 랜덤 여부에 따라 리스트 셔플 후 재생 정지
                 if (!this.mode.isLoop) {
-                    this.shuffle()
+                    if (this.mode.isRandom) {
+                        this.shuffle()
+                    }
                     ctrl.load()
-                    return ctrl.pause()
+                    return this.pause()
                 }
             }
 
@@ -76,7 +91,8 @@ export default {
             ctrl.play()
         },
         emitMusicInfo: function () {
-            this.$emit('music-start', this.nowPlaying)
+            // 상위 컴포넌트에게 music-info 이벤트 발생
+            this.$emit('music-info', this.nowPlaying)
         },
         pause: function () {
             if (!this.isPaused) {

@@ -6,7 +6,7 @@
             :playlist="chOptions.playlist"
             :mode="{isRandom: true, isLoop: false}"
             v-if="turnOnAudio"
-            @music-start="showMusicInfo"/>
+            @music-info="showMusicInfo"/>
         <div class="post-line">
             <m-text-bar
                 class="line-text"
@@ -58,10 +58,15 @@ export default {
     },
     data () {
         return {
+            /** 소켓 객체 */
             socket: null,
+            /** textbar에 입력한 텍스트 */
             line: '',
+            /** 버튼 위에 커서가 존재하는지 여부 */
             hasCursor: false,
+            /** 소켓이 정상적으로 연결되었는지 여부 */
             isSocketOn: false,
+            /** 채널 옵션 객체 */
             chOptions: Object
         }
     },
@@ -73,7 +78,7 @@ export default {
             this.$refs.lineArea.pushNotice({
                 msgCode: 1,
                 msgType: 'notice',
-                msg: 'socketio 서버 연결됨.',
+                msg: '채팅 서버 연결됨.',
                 timeout: 3000
             })
 
@@ -85,7 +90,7 @@ export default {
             this.$refs.lineArea.pushNotice({
                 msgCode: 2,
                 msgType: 'error',
-                msg: 'socketio 서버 연결 끊어짐.',
+                msg: '채팅 서버 연결 끊어짐.',
                 timeout: 5000
             })
             this.isSocketOn = false
@@ -149,20 +154,26 @@ export default {
         }
     },
     methods: {
+        /**
+         * socket 서버에 line 발송
+         */
         postLine: function () {
             if (this.line && this.isSocketOn) { // 정상적으로 이벤트 발생
-                this.socket.emit('line', {
+                this.socket.emit('line', { // Socket 서버에 아래 데이터 전송
                     line: this.line,
                     channel: this.$route.params.chId, // placeholding
-                    author: '아무개' // also placeholoding
+                    author: '!!NotSignedUser!!' // also placeholoding
                 })
+                this.line = ''
             } else if (!this.line) { // 텍스트 없음
                 alert('내용을 입력해주세요.')
             } else if (!this.isSocketOn) { // socketio 연결 안됨
                 alert('채팅 서버가 연결되지 않았습니다.\n anteater333@github 로 문의해 주세요.')
             }
-            this.line = ''
         },
+        /**
+         * 현재 재생 중인 음악 정보를 lineArea에 line 형식으로 출력
+         */
         showMusicInfo: function (music) {
             const str = `${music.title} - ${music.by}`
             this.$refs.lineArea.enqueue(str)
