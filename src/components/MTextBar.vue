@@ -1,10 +1,12 @@
 <template>
     <span class="text-bar">
         <input type="text" class="input-text"
+            ref="input-text"
             :placeholder="catchPhrase"
             :value="value"
             @keydown.enter="emitEnter"
-            @input="updateValue($event.target.value)">
+            @input="updateValue($event.target.value)"
+            autofocus>
     </span>
 </template>
 

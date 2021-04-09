@@ -12,7 +12,7 @@
                     class="search-text"
                     :catch-phrase="greeting"
                     v-model="searchKey"
-                    @enter="searchChan" />
+                    @enter="searchChan"/>
             </div>
         </div>
     </div>
