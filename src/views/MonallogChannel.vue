@@ -133,6 +133,9 @@ export default {
         this.$store.dispatch('turnOffBg')
         next()
     },
+    mounted () {
+        this.$refs.lineText.focus()
+    },
     computed: {
         encourage: function () {
             return 'Speak your line.'

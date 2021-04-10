@@ -1,7 +1,7 @@
 <template>
     <span class="text-bar">
         <input type="text" class="input-text"
-            ref="input-text"
+            ref="inputText"
             :placeholder="catchPhrase"
             :value="value"
             @keydown.enter="emitEnter"
@@ -34,6 +34,10 @@ export default {
         },
         emitEnter: function () {
             this.$emit('enter')
+        },
+        focus: function () {
+            console.log('focus')
+            this.$refs.inputText.focus()
         }
     }
 }

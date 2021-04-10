@@ -10,6 +10,7 @@
             <div class="search">
                 <m-text-bar
                     class="search-text"
+                    ref="searchText"
                     :catch-phrase="greeting"
                     v-model="searchKey"
                     @enter="searchChan"/>
@@ -30,6 +31,9 @@ export default {
         return {
             searchKey: ''
         }
+    },
+    mounted () {
+        this.$refs.searchText.focus()
     },
     computed: {
         greeting: function () {
