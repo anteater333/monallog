@@ -10,6 +10,8 @@
         <div class="post-line">
             <m-text-bar
                 class="line-text"
+                ref="lineText"
+                :max-length=140
                 :catch-phrase="encourage"
                 @enter="postLine"
                 v-model="line"/>
@@ -144,9 +146,12 @@ export default {
             return this.line.length
         },
         counterColor: function () {
-            const gray = 200 - this.lineCount * 5
+            const gray = 200 - this.lineCount * 2
+            const red = (this.lineCount > 100) ? (this.lineCount - 100) * 8.5 : 0
+            const bold = (this.lineCount > 130) ? 'bold' : 'normal'
             return {
-                color: `rgb(${gray}, ${gray}, ${gray})`
+                color: `rgb(${gray + red}, ${gray}, ${gray})`,
+                fontWeight: bold
             }
         },
         hasText: function () {
@@ -161,17 +166,17 @@ export default {
          * socket 서버에 line 발송
          */
         postLine: function () {
-            if (this.line && this.isSocketOn) { // 정상적으로 이벤트 발생
+            if (!this.line || !/\S/.test(this.line)) { // 텍스트 없음 혹은 공백으로만 이루어짐
+                alert('내용을 입력해주세요.')
+            } else if (!this.isSocketOn) { // socketio 연결 안됨
+                alert('채팅 서버가 연결되지 않았습니다.\n anteater333@github 로 문의해 주세요.')
+            } else if (this.line && this.isSocketOn) { // 정상적으로 이벤트 발생
                 this.socket.emit('line', { // Socket 서버에 아래 데이터 전송
                     line: this.line,
                     channel: this.$route.params.chId, // placeholding
                     author: '!!NotSignedUser!!' // also placeholoding
                 })
                 this.line = ''
-            } else if (!this.line) { // 텍스트 없음
-                alert('내용을 입력해주세요.')
-            } else if (!this.isSocketOn) { // socketio 연결 안됨
-                alert('채팅 서버가 연결되지 않았습니다.\n anteater333@github 로 문의해 주세요.')
             }
         },
         /**

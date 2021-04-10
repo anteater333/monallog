@@ -2,11 +2,11 @@
     <span class="text-bar">
         <input type="text" class="input-text"
             ref="inputText"
+            :maxlength="maxLength"
             :placeholder="catchPhrase"
             :value="value"
             @keydown.enter="emitEnter"
-            @input="updateValue($event.target.value)"
-            autofocus>
+            @input="updateValue($event.target.value)">
     </span>
 </template>
 
@@ -21,6 +21,10 @@ export default {
         value: {
             type: String,
             default: ''
+        },
+        maxLength: {
+            type: Number,
+            default: 140
         }
     },
     data () {

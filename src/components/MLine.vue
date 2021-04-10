@@ -82,8 +82,12 @@ getRandomInt(1, 10)
 <style>
 .m-line {
     position: absolute;
-    white-space: nowrap;
-    font-size: 4vh;
+    word-break: break-all;
+    white-space: normal;
+    font-size: 2vh;
+    width: 35vh;
+    text-align: left;
+    cursor: pointer;
 }
 
 .m-line:hover {
