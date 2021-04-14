@@ -1,9 +1,9 @@
 <template>
     <span class="text-bar">
-        <input type="text" class="input-text"
+        <input :type="type" class="input-text"
             ref="inputText"
             :maxlength="maxLength"
-            :placeholder="catchPhrase"
+            :placeholder="placeholder"
             :value="value"
             @keydown.enter="emitEnter"
             @input="updateValue($event.target.value)">
@@ -14,7 +14,11 @@
 export default {
     name: 'MTextBar',
     props: {
-        catchPhrase: {
+        type: {
+            type: String,
+            default: 'text'
+        },
+        placeholder: {
             type: String,
             default: 'Monallog, 집단적 독백.'
         },
@@ -76,5 +80,9 @@ export default {
 input.input-text::placeholder {
     opacity: 0.5;
     font-family: NanumBarunGothic;
+}
+
+input.input-text:invalid {
+    box-shadow: none;
 }
 </style>

@@ -24,22 +24,27 @@ const router = new Router({
             path: '*',
             name: '404',
             component: () => import(/* webpackChunkName: "404" */'./views/MonallogNotFound.vue')
+        },
+        {
+            path: '/member/signin',
+            name: 'sign-in',
+            component: () => import(/* webpackChunkNmae: "sign-in" */'./views/MonallogSignIn.vue')
         }
-    /*
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('./views/About.vue') // webpackChunkName: "about"
-    }
-    */
-    // , { // temporary routing for development
-    //   path: '/dev',
-    //   name: 'dev',
-    //   component: () => import(`./views/MonallogChannel.vue`)
-    // }
+        /*
+        {
+        path: '/about',
+        name: 'about',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import('./views/About.vue') // webpackChunkName: "about"
+        }
+        */
+        , { // temporary routing for development
+            path: '/dev',
+            name: 'dev',
+            component: () => import('./views/MonallogSignIn.vue')
+        }
     ]
 })
 

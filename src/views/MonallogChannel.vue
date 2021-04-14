@@ -12,7 +12,7 @@
                 class="line-text"
                 ref="lineText"
                 :max-length=140
-                :catch-phrase="encourage"
+                :placeholder="encourage"
                 @enter="postLine"
                 v-model="line"/>
             <button

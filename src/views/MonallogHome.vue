@@ -11,7 +11,7 @@
                 <m-text-bar
                     class="search-text"
                     ref="searchText"
-                    :catch-phrase="greeting"
+                    :placeholder="greeting"
                     v-model="searchKey"
                     @enter="searchChan"/>
             </div>
@@ -52,7 +52,7 @@ export default {
 .monallog-home {
     position: absoulte;
 
-    display: flexbox;
+    display: flex;
 }
 
 .home-content {

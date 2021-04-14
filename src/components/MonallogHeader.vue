@@ -8,10 +8,11 @@
         </router-link>
         <div v-if="!isAuthenticated" class="identification">
             <m-button class="sign-button sign-up"
-            @click="signIn">
+            @click="signUp">
               SIGN UP
             </m-button>
-            <m-button class="sign-button sign-in">
+            <m-button class="sign-button sign-in"
+            @click="signIn">
               SIGN IN
             </m-button>
             <!-- placeholding -->
@@ -51,7 +52,10 @@ export default {
     },
     methods: {
         signIn: function () {
-            alert('개발중임다.')
+            this.$router.push({ name: 'sign-in' })
+        },
+        signUp: function () {
+            alert('개발중.')
         }
     }
 }
