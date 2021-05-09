@@ -29,7 +29,7 @@ const router = new Router({
             path: '/member/signin',
             name: 'sign-in',
             component: () => import(/* webpackChunkNmae: "sign-in" */'./views/MonallogSignIn.vue')
-        }
+        },
         /*
         {
         path: '/about',
@@ -40,7 +40,7 @@ const router = new Router({
         component: () => import('./views/About.vue') // webpackChunkName: "about"
         }
         */
-        , { // temporary routing for development
+        { // temporary routing for development
             path: '/dev',
             name: 'dev',
             component: () => import('./views/MonallogSignIn.vue')

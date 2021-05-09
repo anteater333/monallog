@@ -1,5 +1,9 @@
 module.exports = {
     assetsDir: '',
     publicPath: '/monallog/',
-    lintOnSave: false
+    lintOnSave: false,
+
+    transpileDependencies: [
+        'vuetify'
+    ]
 }

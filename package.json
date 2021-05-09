@@ -1,11 +1,9 @@
 {
   "name": "monallog",
   "version": "0.0.1",
+  "private": true,
   "description": "monallog, tiny social media.",
   "author": "Anteater333",
-  "license": "UNLICENSED YET",
-  "private": true,
-  "homepage": "https://anteater333.github.io/monallog",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -20,6 +18,7 @@
     "socket.io-client": "^4.0.1",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
+    "vuetify": "^2.4.11",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
@@ -40,9 +39,12 @@
     "eslint-plugin-vue": "^7.9.0",
     "gh-pages": "^3.1.0",
     "node-sass": "^5.0.0",
-    "sass-loader": "^11.0.1",
+    "sass": "^1.32.0",
+    "sass-loader": "^10",
+    "vue-cli-plugin-vuetify": "^2.4.0",
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12",
+    "vuetify-loader": "^1.7.0",
     "webpack": "^4.46.0"
   },
   "eslintConfig": {
@@ -78,5 +80,7 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "homepage": "https://anteater333.github.io/monallog",
+  "license": "UNLICENSED YET"
 }
