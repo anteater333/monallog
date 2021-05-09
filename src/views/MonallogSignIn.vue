@@ -1,34 +1,40 @@
 <template>
     <div class="monallog-sign-in">
         <div class="monallog-sign-in-text-layout">
-            <m-text-bar
+            <v-text-field
                 class="sign-in-text user-email"
-                ref="emailText"
+                label="Your email"
+                hide-details="auto"
                 v-model="userEmail"
-                placeholder="Your email"
-                type="email"/>
-            <m-text-bar
+                ref="emailText"
+                type="email"
+                color="rgb(255,255,255)"
+                @keyup.enter="signInRequest" />
+            <v-text-field
                 class="sign-in-text user-password"
-                placeholder="Your password"
+                label="Your password"
+                hide-details="auto"
                 v-model="userPwd"
-                type="password"/>
+                ref="pwdText"
+                type="password"
+                color="rgb(255,255,255)"
+                @keyup.enter="signInRequest" />
+            <v-btn
+                class="sign-in-btn"
+                ref="signInBtn"
+                outlined
+                @click="signInRequest">
+                Sign In
+            </v-btn>
         </div>
-        <m-button>
-            Sign In
-        </m-button>
     </div>
 </template>
 
 <script>
-import MTextBar from '@/components/MTextBar.vue'
-import MButton from '@/components/MButton.vue'
+import axios from "axios";
 
 export default {
     name: 'MonallogSignIn',
-    components: {
-        'm-text-bar': MTextBar,
-        'm-button': MButton
-    },
     data () {
         return {
             userEmail: '',
@@ -41,6 +47,42 @@ export default {
     computed: {
     },
     methods: {
+        signInRequest: function() {
+            if (this.userEmail === "") {
+                this.invalidEmail()
+                return
+            }
+            if (this.userPwd === "") {
+                this.invalidPwd()
+                return
+            }
+
+            const reqURI = process.env.VUE_APP_API_SERVER
+                + '/auth/login'
+            const reqBody = {
+                email: this.userEmail,
+                password: this.userPwd
+            }
+
+            this.$refs.signInBtn.loading = true
+            axios.post(reqURI, reqBody)
+                .then((response) => {
+                    alert('do something')
+                })
+                .catch((err) => {
+                    alert(err)
+                })
+                .finally(() => {
+                    this.$refs.signInBtn.loading = false
+                    console.log('finally')
+                })
+        },
+        invalidEmail: function () {
+            this.$refs.emailText.error = true
+        },
+        invalidPwd: function () {
+            this.$refs.pwdText.error = true
+        }
     }
 }
 </script>
@@ -48,37 +90,25 @@ export default {
 <style scoped>
 .monallog-sign-in {
     position: absolute;
+    top: 0;
+    bottom: 5vh;
+    right: 0;
+    left: 0;
+    margin: auto;
 
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .monallog-sign-in .sign-in-text {
-    width: 50vw;
+    width: 20vw;
     margin: 1rem;
     position: flex;
 }
 
-.home-content {
-    position: absolute;
-    top: 35vh;
-
-    width: 100%;
-
-    opacity: 0.75;
-}
-
-.main-logo {
-    margin-bottom: 5vh;
-}
-
-.search {
-    margin: auto;
-
-    max-width: 457px;
-    height: 42px;
-
-    padding: 0px 20px;
-
-    opacity: 0.75;
+.sign-in-btn {
+    margin: 1rem;
+    opacity: 0.5;
 }
 </style>
