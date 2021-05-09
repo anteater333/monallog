@@ -50,9 +50,15 @@ export default {
 
 <style scoped>
 .monallog-home {
-    position: absoulte;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
 
     display: flex;
+    justify-content: center;
 }
 
 .home-content {

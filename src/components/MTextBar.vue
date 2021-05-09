@@ -69,7 +69,7 @@ export default {
     border: 0;
     background-color: transparent;
 
-    margin: 8px 1em;
+    margin: 4px 1em;
     width: calc(100% - 2em);
 
     font-family: NanumBarunGothic;

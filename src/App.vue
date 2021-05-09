@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app dark id="app">
     <monallog-header />
     <section class="main-view" >
       <global-background />
@@ -8,7 +8,7 @@
       </transition>
     </section>
     <monallog-footer />
-  </div>
+  </v-app>
 </template>
 
 <script>

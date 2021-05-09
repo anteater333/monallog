@@ -7,14 +7,16 @@
                 class="small-logo-img">
         </router-link>
         <div v-if="!isAuthenticated" class="identification">
-            <m-button class="sign-button sign-up"
+            <v-btn class="sign-button sign-up"
+            outlined
             @click="signUp">
               SIGN UP
-            </m-button>
-            <m-button class="sign-button sign-in"
+            </v-btn>
+            <v-btn class="sign-button sign-in"
+            outlined
             @click="signIn">
               SIGN IN
-            </m-button>
+            </v-btn>
             <!-- placeholding -->
           </div>
         <div v-else class="identification">
@@ -27,13 +29,9 @@
 </template>
 
 <script>
-import MButton from '@/components/MButton.vue'
 
 export default {
     name: 'MonallogHeader',
-    components: {
-        'm-button': MButton
-    },
     data:
         function () {
             return {
