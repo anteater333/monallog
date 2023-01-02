@@ -25,11 +25,11 @@
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
     "@types/socket.io-client": "^1.4.36",
-    "@vue/cli-plugin-babel": "^4.5.12",
-    "@vue/cli-plugin-eslint": "^4.5.12",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
     "@vue/cli-plugin-router": "^4.5.12",
     "@vue/cli-plugin-vuex": "^4.5.12",
-    "@vue/cli-service": "^4.5.12",
+    "@vue/cli-service": "^5.0.8",
     "@vue/eslint-config-standard": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.23.0",
@@ -42,9 +42,9 @@
     "minimist": "^1.2.5",
     "stylus": "^0.54.8",
     "stylus-loader": "^5.0.0",
-    "vue-loader": "^15.9.6",
+    "vue-loader": "^17.0.1",
     "vue-template-compiler": "^2.6.12",
-    "webpack": "^4.46.0"
+    "webpack": "^5.75.0"
   },
   "resolutions": {
     "minimist": "^1.2.5"
